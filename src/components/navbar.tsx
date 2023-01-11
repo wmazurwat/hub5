@@ -11,7 +11,7 @@ import React, { useState, useEffect } from "react";
 const Navbar = () => {
   const [isAdmin, setIsAdmin] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -25,12 +25,12 @@ const Navbar = () => {
     }
   }
   auth.onAuthStateChanged((user) => {
-    setIsLoggedIn(!!user)
+    setIsLoggedIn(!!user);
     if (user) {
       fetchUser();
     } else {
-      if(location.pathname !== '/login') {
-        // navigate("/login")
+      if (location.pathname !== "/login") {
+        navigate("/login");
       }
     }
   });
@@ -43,15 +43,17 @@ const Navbar = () => {
       <Toolbar>
         {isAdmin ? <Link to="/admin">Admin</Link> : null}
 
-        {isLoggedIn ? <Button
-          sx={{ flex: 1, justifyContent: "flex-end" }}
-          onClick={() => {
-            signOut(auth);
-          }}
-          color="inherit"
-        >
-          Logout
-        </Button>: null}
+        {isLoggedIn ? (
+          <Button
+            sx={{ flex: 1, justifyContent: "flex-end" }}
+            onClick={() => {
+              signOut(auth);
+            }}
+            color="inherit"
+          >
+            Logout
+          </Button>
+        ) : null}
       </Toolbar>
     </AppBar>
   );
