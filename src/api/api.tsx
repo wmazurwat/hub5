@@ -12,11 +12,11 @@ export const getVideoInfo = async (url: string) => {
   return info;
 };
 
-export const getMp3 = async (url: string) => {
+export const getMp3 = async (url: string, samplingRate: number) => {
   console.log(url);
   const x = await fetch(URL + "/yt-new", {
     method: "POST",
-    body: JSON.stringify({ url }),
+    body: JSON.stringify({ url, samplingRate }),
     headers: {
       "Content-Type": "application/json",
     },
