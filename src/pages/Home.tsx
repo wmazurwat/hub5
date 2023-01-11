@@ -16,11 +16,12 @@ const Home = () => {
   const formik = useFormik({
     initialValues: {
       url: "",
+      samplingRate: 2200
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       setIsLoading(true);
-      const mp3 = await getMp3(values.url);
+      const mp3 = await getMp3(values.url, values.samplingRate);
 
       if (audio.current != undefined) {
         // @ts-ignore
@@ -42,9 +43,21 @@ const Home = () => {
         <form onSubmit={formik.handleSubmit}>
           <TextField
             id="url"
+            fullWidth
             name="url"
             label="Adres URL youtube.com"
             value={formik.values.url}
+            onChange={formik.handleChange}
+            margin="normal"
+          />
+          <br />
+          <TextField
+            fullWidth
+            margin="normal"
+            id="samplingRate"
+            name="samplingRate"
+            label="Sampling Rate"
+            value={formik.values.samplingRate}
             onChange={formik.handleChange}
           />
           <Button
