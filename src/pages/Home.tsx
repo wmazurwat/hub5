@@ -16,7 +16,7 @@ const Home = () => {
   const formik = useFormik({
     initialValues: {
       url: "",
-      samplingRate: 2200
+      samplingRate: 42000,
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {

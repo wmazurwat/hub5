@@ -42,7 +42,7 @@ const Navbar = () => {
     <AppBar position="static">
       <Toolbar>
         {isAdmin ? <Link to="/admin">Admin</Link> : null}
-
+        <Link to="/">Home</Link>
         {isLoggedIn ? (
           <Button
             sx={{ flex: 1, justifyContent: "flex-end" }}
