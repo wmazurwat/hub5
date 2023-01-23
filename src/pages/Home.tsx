@@ -16,7 +16,7 @@ const Home = () => {
   const formik = useFormik({
     initialValues: {
       url: "",
-      samplingRate: 42000,
+      samplingRate: 128,
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
@@ -37,7 +37,8 @@ const Home = () => {
     <div className="main">
       <h4>
         Wpisz poniżej adres URL linku platformy youtube.com który chcesz
-        przekształcić na plik audio z rozszeżeniem .mp3
+        przekształcić na plik audio z rozszeżeniem .mp3 oraz prametr bitrate z
+        przedziału 1-128
       </h4>
       <div>
         <form onSubmit={formik.handleSubmit}>
@@ -56,7 +57,7 @@ const Home = () => {
             margin="normal"
             id="samplingRate"
             name="samplingRate"
-            label="Sampling Rate"
+            label="Sampling BitRate"
             value={formik.values.samplingRate}
             onChange={formik.handleChange}
           />
